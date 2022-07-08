@@ -49,7 +49,7 @@ module Rswag
           .merge('$schema' => 'http://tempuri.org/rswag/specs/extended_schema')
           .merge(schemas)
 
-        errors = JSON::Validator.fully_validate(validation_schema, body)
+        errors = JSON::Validator.fully_validate(validation_schema, eval(body).to_json)
         return unless errors.any?
 
         raise UnexpectedResponse,
