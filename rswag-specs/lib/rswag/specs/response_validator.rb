@@ -46,7 +46,7 @@ module Rswag
         schemas = definitions_or_component_schemas(swagger_doc, version)
 
         validation_schema = response_schema
-          .merge('$schema' => 'http://tempuri.org/rswag/specs/extended_schema')
+          # .merge('$schema' => 'http://example.org/rswag/specs/extended_schema')
           .merge(schemas)
 
         errors = JSON::Validator.fully_validate(validation_schema, eval(body).to_json)
